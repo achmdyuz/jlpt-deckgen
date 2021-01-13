@@ -1,2 +1,3 @@
 # jlpt-deckgen
-Simple Python scrapper for creating Anki kanji deck by generating CSV file from Jisho.org kanji pages.
+
+I need to put all "Kanji characters" from different JLPT level into Anki decks. I can put all the character by put that on Anki decks 1 by 1, that what I'm doing with JLPT N5 kanji, but after learn JLPT N4 kanji which have more than 200 characters suddenly I feel too lazy to do it manually. I wish someone can do this for me, but I don't even have 1 friend right now. Fortunately I still have my old virtual friend called Python, so I asked Her/His to do it, and I got an anwer and feel down because at the end I should do this by myself, Python can only help but not 100 percent help, I think it's help about 25 percent and the remain 75 percent is my job.
