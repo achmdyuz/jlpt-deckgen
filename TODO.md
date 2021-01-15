@@ -17,3 +17,5 @@
 8. For now, this script will not be able to find any compound example, So please learn some more technique until you able to adding that function into this file.
 
 9. Try to write better comment every time you modify the script.
+
+10. I wonder if this script need GUI or not... I learn little bit about Tkinter though.
