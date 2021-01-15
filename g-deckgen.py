@@ -6,7 +6,7 @@ import random
 from tkinter import *
 from tkinter import ttk
 
-# Deckgen graphic interface start here
+# Graphic interface start here
 class Window(Tk):
     def __init__(self):
         super(Window, self).__init__()
