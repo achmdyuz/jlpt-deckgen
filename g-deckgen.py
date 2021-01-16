@@ -34,7 +34,7 @@ class Window(Tk):
 # Combobox action
     def scrapping_it(self):
         self.label.configure(text = "Test success!")
-        self.label.configure(text = self.JLPT.get()+" Scrapped")
+        self.label.configure(text = "Scrapping : "+self.JLPT.get())
 
 # Main loop 
 window = Window()
