@@ -9,11 +9,8 @@ import csv
 # Creating the main function and call any other needed function
 def main():
     get_input()
-    get_kanji()
 # Scrapping start from here
 
-# Change the function name into "def get_input():
-#def kanji_scrapper():
 def get_input():
     # Get some data from user
         get_input.jlpt_level = int(input("Enter the JLPT level do you studying (1: hardest, 2, 3, 4, 5: easiest): "))
@@ -26,16 +23,16 @@ def get_input():
         else:
             get_input.filename = temp_filename
 
-
+        get_kanji(jlpt_level = get_input.jlpt_level, start_page = get_input.start_page, end_page = get_input.end_page) 
 # Change the function name into "get_kanji():"
-def get_kanji():
+def get_kanji(jlpt_level, start_page, end_page):
     # Let's do it
-    while(get_input.start_page <= get_input.end_page):
+    while(start_page <= end_page):
     
-        source_page = requests.get(f'https://jisho.org/search/%23kanji%20%23jlpt-n{get_input.jlpt_level}?page={get_input.start_page}').text # Mix url source with data from user
-        get_input.start_page += 1
-        print("Scrapping page : "+str(get_input.start_page))
-        delay = random.randint(1, 30)
+        source_page = requests.get(f'https://jisho.org/search/%23kanji%20%23jlpt-n{jlpt_level}?page={start_page}').text # Mix url source with data from user
+        start_page += 1
+        print("Scrapping page : "+str(start_page))
+        delay = random.randint(1, 5)
         time.sleep(delay)
         soup = BeautifulSoup(source_page, 'lxml')
     
@@ -56,14 +53,16 @@ def get_kanji():
                 on_reading = " "
             else:
                 on_reading = kanji.find('div', class_='on readings').text.replace('\n', '').strip()
-            write_csv(character, meaning, kun_reading, on_reading)   
+            write_csv(character, meaning, kun_reading, on_reading, tags = get_input.tags, this_file = get_input.filename)   
 # Change into "def write_csv():"
 
 # Put everything into CSV file
-def write_csv(character, meaning, kun_reading, on_reading):
-    with open(f'file_output/{get_input.filename}', 'a') as csv_source:
+def write_csv(character, meaning, kun_reading, on_reading, tags, this_file):
+    ''' This function used by script for writing csv file after receive all the data needed from get_kanji function'''
+    ''' To using this functon, call this function with parameter like this : write_dev(character, meaning, kun_reading, on_reading, tags, this_file) '''
+    with open(f'file_output/{this_file}', 'a') as csv_source:
         csv_writer = csv.writer(csv_source, delimiter=':', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csv_writer.writerow([character, meaning, kun_reading, on_reading, "Compound 0", "Compound 1", "Compound 2", "Compound 3", "Compound 4", "Sentences example : ", get_input.tags])
+        csv_writer.writerow([character, meaning, kun_reading, on_reading, "Compound 0", "Compound 1", "Compound 2", "Compound 3", "Compound 4", "Sentences example : ", tags])
 
 if __name__=='__main__':
     main()
