@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*- # Setup characters encode to "UTF-8"
-from deckgen import get_kanji, get_input, write_csv
+from deckgen import get_kanji, write_csv 
 import time
 import random
 from tkinter import *
@@ -33,8 +33,9 @@ class Window(Tk):
 
 # Combobox action
     def scrapping_it(self):
-        self.label.configure(text = "Test success!")
-        self.label.configure(text = "Scrapping : "+self.JLPT.get())
+        JLPT_selected = self.JLPT.get()
+        self.label.configure(text = "Scrapping : "+JLPT_selected)
+        
 
 # Main loop 
 window = Window()
