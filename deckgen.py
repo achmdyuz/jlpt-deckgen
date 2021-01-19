@@ -37,6 +37,10 @@ def get_kanji(jlpt_level, start_page, end_page):
         soup = BeautifulSoup(source_page, 'lxml')
     
         #kanji = soup.find("a", attrs={"href":"jisho.org/search/%E6%B0%8F%20%23kanji"}) # This is how to find tag with attributes
+
+        # Output filename will be have name from variable below
+        nametag = "JLPT-N"+str(jlpt_level)
+        
     
         kanjis = soup.find_all('div', class_='entry kanji_light clearfix')
         for kanji in kanjis:
@@ -53,7 +57,7 @@ def get_kanji(jlpt_level, start_page, end_page):
                 on_reading = " "
             else:
                 on_reading = kanji.find('div', class_='on readings').text.replace('\n', '').strip()
-            write_csv(character, meaning, kun_reading, on_reading, tags = get_input.tags, this_file = get_input.filename)   
+            write_csv(character, meaning, kun_reading, on_reading, tags = nametag, this_file = nametag)
 # Change into "def write_csv():"
 
 # Put everything into CSV file
@@ -63,7 +67,5 @@ def write_csv(character, meaning, kun_reading, on_reading, tags, this_file):
     with open(f'file_output/{this_file}', 'a') as csv_source:
         csv_writer = csv.writer(csv_source, delimiter=':', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow([character, meaning, kun_reading, on_reading, "Compound 0", "Compound 1", "Compound 2", "Compound 3", "Compound 4", "Sentences example : ", tags])
-
 if __name__=='__main__':
     main()
-    print("All pages scrapped")

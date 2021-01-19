@@ -34,7 +34,12 @@ class Window(Tk):
 # Combobox action
     def scrapping_it(self):
         JLPT_selected = self.JLPT.get()
-        self.label.configure(text = "Scrapping : "+JLPT_selected)
+        if JLPT_selected == "JLPT-N1":
+            start_page = 0
+            #end_page = 63
+            end_page = 1 #demo
+            get_kanji(JLPT_selected, start_page, end_page)
+            self.label.configure(text = "Scrapping : "+JLPT_selected + str(start_page) + str(end_page))
         
 
 # Main loop 
