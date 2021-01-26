@@ -62,7 +62,7 @@ def get_kanji(jlpt_level, start_page, end_page):
 def write_csv(character, meaning, kun_reading, on_reading, tags, this_file):
     ''' This function used by script for writing csv file after receive all the data needed from get_kanji function'''
     ''' To using this functon, call this function with parameter like this : write_dev(character, meaning, kun_reading, on_reading, tags, this_file) '''
-    with open(f'file_output/{this_file}', 'a') as csv_source:
+    with open(f'file_output/{this_file+".csv"}', 'a') as csv_source:
         csv_writer = csv.writer(csv_source, delimiter=':', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow([character, meaning, kun_reading, on_reading, "Compound 0", "Compound 1", "Compound 2", "Compound 3", "Compound 4", "Sentences example : ", tags])
 if __name__=='__main__':
