@@ -6,7 +6,7 @@ import time
 import random
 import csv
 
-# Declare the main function and call any other function from here 
+# Declare the main function and call other function from here 
 def main():
     get_input()
 
