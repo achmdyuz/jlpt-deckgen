@@ -6,11 +6,11 @@ import time
 import random
 import csv
 
-# Creating the main function and call any other needed function
+# Declare the main function and call any other function from here 
 def main():
     get_input()
-# Scrapping start from here
 
+# Scrapping start from here
 def get_input():
     # Get some data from user
         get_input.jlpt_level = int(input("Enter the JLPT level do you studying (1: hardest, 2, 3, 4, 5: easiest): "))
@@ -24,9 +24,8 @@ def get_input():
             get_input.filename = temp_filename
 
         get_kanji(jlpt_level = get_input.jlpt_level, start_page = get_input.start_page, end_page = get_input.end_page) 
-# Change the function name into "get_kanji():"
 def get_kanji(jlpt_level, start_page, end_page):
-    # Let's do it
+    # Get kanji, meaning, and reading from jisho with user input as parameter
     while(start_page <= end_page):
     
         source_page = requests.get(f'https://jisho.org/search/%23kanji%20%23jlpt-n{jlpt_level}?page={start_page}').text # Mix url source with data from user
@@ -58,7 +57,6 @@ def get_kanji(jlpt_level, start_page, end_page):
             else:
                 on_reading = kanji.find('div', class_='on readings').text.replace('\n', '').strip()
             write_csv(character, meaning, kun_reading, on_reading, tags = nametag, this_file = nametag)
-# Change into "def write_csv():"
 
 # Put everything into CSV file
 def write_csv(character, meaning, kun_reading, on_reading, tags, this_file):
