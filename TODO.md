@@ -23,3 +23,4 @@
 
 11. I am planning to create graphic interface for this simple script.
 Today, I learn how to create simple GUI for this script from video tutorial. I am writing g-deckgen.py after watching the tutorial and practicing on some random script. : Under construction.
+12. Try to add a function to check if the output directory exists, if not then create one.
