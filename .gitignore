@@ -8,3 +8,4 @@ __pycache__/
 *$py.class
 proto/
 file_output/*.csv
+output_file/*.csv
