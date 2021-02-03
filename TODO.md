@@ -11,6 +11,7 @@
 5. Try to find how to filter user input, to make sure any incorrect user input not causing error and break the script.
 
 6. Find better way to handling file, if possible give user choice between overwrite the old file or give other name into the new file. : Future plan.
+    6.1. How to make sure output_file directory is exist and if not create one? Done :)
 
 7. Divide the file into few separate file, and make sure the script still work : Divide the function into 3 or more and make sure 1 function is only doing 1 job.
 
