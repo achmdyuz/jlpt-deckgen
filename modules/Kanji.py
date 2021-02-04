@@ -10,7 +10,7 @@ def get_kanji(level, start, end):
         source_page = requests.get(f'https://jisho.org/search/%23kanji%20%23jlpt-n{level}?page={start}').text
         start += 1
         print(f'Scrapping page: {str(start)}')
-        delay = random.randint(1, 5)
+        delay = random.randint(1, 15)
         time.sleep(delay)
         soup = BeautifulSoup(source_page, 'lxml')
 
