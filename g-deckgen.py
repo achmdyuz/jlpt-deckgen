@@ -1,47 +1,77 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*- # Setup characters encode to "UTF-8"
-from deckgen import get_kanji, write_csv 
-import time
-import random
-from tkinter import *
+import tkinter
 from tkinter import ttk
+from modules.Kanji import get_kanji
+from modules.Writeit import write_csv
 
-# Graphic interface start here
-class Window(Tk):
-    def __init__(self):
-        super(Window, self).__init__()
-        self.title("Graphic CSV generator")
-        self.minsize(500, 400)
+def scrapping():
+    level = jlptchoosen.get()[6]
+    if level == '1':
+        level = int(level) 
+        start = int('0')
+        end = int('64')
+        tags = 'JLPT-N'+str(level)
+        filename = 'JLPT-N'+str(level)+'.csv'
+        for kanji in get_kanji(level, start, end):
+            write_csv(kanji['character'], kanji['meaning'], kanji['kun'], kanji['on'], tags, filename)
+    elif level == '2':
+        level = int(level) 
+        start = int('0')
+        end = int('21')
+        tags = 'JLPT-N'+str(level)
+        filename = 'JLPT-N'+str(level)+'.csv'
+        for kanji in get_kanji(level, start, end):
+            write_csv(kanji['character'], kanji['meaning'], kanji['kun'], kanji['on'], tags, filename)
+    elif level == '3':
+        level = int(level) 
+        start = int('0')
+        end = int('21')
+        tags = 'JLPT-N'+str(level)
+        filename = 'JLPT-N'+str(level)+'.csv'
+        for kanji in get_kanji(level, start, end):
+            write_csv(kanji['character'], kanji['meaning'], kanji['kun'], kanji['on'], tags, filename)
+    elif level == '4':
+        level = int(level) 
+        start = int('0')
+        end = int('12')
+        tags = 'JLPT-N'+str(level)
+        filename = 'JLPT-N'+str(level)+'.csv'
+        for kanji in get_kanji(level, start, end):
+            write_csv(kanji['character'], kanji['meaning'], kanji['kun'], kanji['on'], tags, filename)
+    elif level == '5':
+        level = int(level) 
+        start = int('0')
+        end = int('7')
+        tags = 'JLPT-N'+str(level)
+        filename = 'JLPT-N'+str(level)+'.csv'
+        for kanji in get_kanji(level, start, end):
+            write_csv(kanji['character'], kanji['meaning'], kanji['kun'], kanji['on'], tags, filename)
+    else:
+        print("Invalid choice")
+# Main window
+window = tkinter.Tk()
+window.title("Anki CSV Deck Generator")
 
-        # Initialize combobox
-        self.level_choice()
+# Widgets
 
-# Create combobox as input choice for users
-    def level_choice(self): 
-        self.JLPT = StringVar()
-        self.combobox = ttk.Combobox(self, width = 20, textvariable = self.JLPT)
-        self.combobox['values'] = ("JLPT-N1", "JLPT-N2", "JLPT-N3", "JLPT-N4", "JLPT-N5")
-        self.combobox.grid(column = 1, row = 0)
+# Combobox
+ttk.Label(window, text = "Select the JLPT level :")
+select = tkinter.StringVar()
+jlptchoosen = ttk.Combobox(window, width = 35, textvariable = select)
+jlptchoosen['values'] = ('JLPT-N1',
+                         'JLPT-N2',
+                         'JLPT-N3',
+                         'JLPT-N4',
+                         'JLPT-N5')
+jlptchoosen.pack()
 
-# Combobox label
-        self.label = ttk.Label(self, text = "Select the JLPT level")
-        self.label.grid(column = 0, row = 0)
+# JLPT-N5 as a default value
+jlptchoosen.current(4)
 
-# Combobbox button
-        self.button = ttk.Button(self, text = "Scrapping it!", command = self.scrapping_it)
-        self.button.grid(column = 2, row = 0)
+# Button
+clickthis = tkinter.Button(text = "Scrap it", width = 7, height = 2, command = scrapping)
+clickthis.pack()
 
-# Combobox action
-    def scrapping_it(self):
-        JLPT_selected = self.JLPT.get()
-        if JLPT_selected == "JLPT-N1":
-            start_page = 0
-            #end_page = 63
-            end_page = 1 #demo
-            get_kanji(JLPT_selected, start_page, end_page)
-            self.label.configure(text = "Scrapping : "+JLPT_selected + str(start_page) + str(end_page))
-        
-
-# Main loop 
-window = Window()
+# Main window loop
 window.mainloop()
