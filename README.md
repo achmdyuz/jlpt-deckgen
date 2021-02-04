@@ -7,4 +7,5 @@
 ## How to use
 
 ''python3 deckgen or python3 g-deckgen
+
 ''If error happen, python3 -m pip install -r requirements.txt
