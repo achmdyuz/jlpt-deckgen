@@ -1,12 +1,5 @@
 #deckgen
 
-#ID
+''deckgen'' is a simple glue script for scrapping (Kanji, meaning, kun reading, on reading) for jisho.org and then save the results into "CSV file".
 
-"deckgen" adalah skrip sederhana yang dibuat untuk mengoleksi "kanji karakter" dari "jisho.org" dan menghasilkan keluaran berupa file "CSV"
-#EN
-
-"deckgen" is simple script created for collecting "kanji character" from "jisho.org" and generating "CSV" file as output.
-
-#JP
-
-"jisho.org"の漢字を収集と"CSV"ふぁいる作成したために"deckgen"のシンプルアプリを作る
+''g-deckgen'' is gui version of deckgen, buggy tkinter graphic interface created just because I want to write this.
