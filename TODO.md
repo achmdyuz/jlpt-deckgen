@@ -20,9 +20,3 @@
 9. Try to write better comment every time you modify the script. : I'm learning now, still not implemented
 
 10. I wonder if this script need GUI or not... I learn little bit about Tkinter though. : I'm writing, not finish yet #04日2月2021年 : I'm done writing a simplest GUI for this script :).
-
-15日1月2021年
-
-11. I am planning to create graphic interface for this simple script.
-Today, I learn how to create simple GUI for this script from video tutorial. I am writing g-deckgen.py after watching the tutorial and practicing on some random script. : Under construction.
-12. Try to add a function to check if the output directory exists, if not then create one.
