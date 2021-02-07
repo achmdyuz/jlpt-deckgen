@@ -18,8 +18,7 @@ def get_kanji(level, start, end):
 
         get_kanji = soup.find_all('div', class_='entry kanji_light clearfix')
         for kanji in get_kanji:
-            character = kanji.find('span',
-                                   class_='character literal japanese_gothic').text.replace('\n', '').strip()
+            character = kanji.find('span', class_='character literal japanese_gothic').text.replace('\n', '').strip()
             meaning = kanji.find('div', class_='meanings english sense').text.replace('\n', '').strip()
             get_kun_reading = kanji.find('div', class_='kun readings')
             if get_kun_reading is None:
@@ -30,9 +29,13 @@ def get_kanji(level, start, end):
             if get_on_reading is None:
                 on_reading = ''
             else:
-                on_reading = kanji.find('div',
-                                        class_='on readings').text.replace('\n', '').strip()
+                on_reading = kanji.find('div', class_='on readings').text.replace('\n', '').strip()
             yield {'character': character,
                    'meaning': meaning,
                    'kun': kun_reading,
                    'on': on_reading}
+
+
+if __name__ == '__main__':
+    for test_kanji in get_kanji(5, 0, 1):
+        print(test_kanji['character'])
