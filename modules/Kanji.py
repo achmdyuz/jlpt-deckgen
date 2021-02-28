@@ -13,7 +13,6 @@ def get_kanji(level, start, end):
         source_page = requests.get(url).text
         start += 1
         print(f'Scrapping page: {str(start)}')
-        print(url)
         delay = random.randint(1, 15)
         time.sleep(delay)
         soup = BeautifulSoup(source_page, 'lxml')
